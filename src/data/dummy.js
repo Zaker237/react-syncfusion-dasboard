@@ -162,7 +162,7 @@ export const areaPrimaryYAxis = {
 export const barPrimaryXAxis = {
   valueType: 'Category',
   interval: 1,
- 
+  majorGridLines: { width: 0 }
 };
 export const barPrimaryYAxis = {
   majorGridLines: { width: 0 },
