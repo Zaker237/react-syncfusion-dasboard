@@ -14,8 +14,19 @@ import './App.css';
 
 const App = () => {
 	
-	const { activeMenu, themeSettings, setThemeSettings,
-		currentColor, currentMode } = useStateContext();
+	const { activeMenu, themeSettings, setThemeSettings, currentColor,
+		 currentMode, setCurrentColor, setCurrentMode } = useStateContext();
+
+	useEffect(() => {
+		const currentThemeColor = localStorage.getItem('themeColor');
+		const currentThemeMode = localStorage.getItem('themeMode');
+		if(currentThemeColor){
+			setCurrentColor(currentThemeColor);
+		}
+		if(currentThemeMode){
+			setCurrentMode(currentThemeMode);
+		}
+	}, []);
 
   return (
     <div className={currentMode === 'Dark' ? 'dark' : ''}>
@@ -93,6 +104,7 @@ const App = () => {
 								<Route path='/stacked' element={<Stacked />} />
 							</Routes>
 						</div>
+						<Footer />
 					</div>
 				</div>	
       </BrowserRouter>
